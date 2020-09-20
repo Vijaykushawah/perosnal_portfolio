@@ -1,0 +1,49 @@
+django-admin startproject peronal_portfolio
+python manage.py startapp blog
+python manage.py startapp portfolio
+make enteries in settings installed app
+python manage.py runserver
+
+Models is just like python class
+Go to below documentation and get actual field name for django
+https://docs.djangoproject.com/en/3.1/ref/models/fields/
+pip install pillow   ---for imageField
+
+python manage.py showmigrations ---to check if any models availabe to be migrated
+python manage.py makemigrations --first execute then migrate command
+python manage.py migrate --to migrate means database structure 
+
+we have not created id field still it's created by default having primary key
+if we change any field in model class then makemigration and migrate
+
+python manage.py createsuperuser
+now runserver login but here no project added so go to admin.py
+from .models import Project
+admin.site.register(Project)
+
+now visibe project
+add project 
+here image file is not visible so add MEDIA_ROOT=BASE_DIR/'media'  
+
+->now we create url for portfolio and add template home to view
+how we can interact with database?
+We import Project and pass these as dictionary to home.html
+
+->now if we want to show something after one click url then use include to view data from another app
+
+->Let's create model for Blog
+add custom fields here
+check for migration and makemigration
+->But Blog is not visible to admin
+register Blog in admin.py using 
+from .models import Blog
+admin.site.register(Blog)
+->Now visible to admin ,add data from front end
+->Now access data from database using
+from .models import Blog
+blogs=Blog.objects.all()
+now pass this blogs to html template and view accordingly
+
+->use sqlite viewer to view your database
+->how to show static content?
+use {% load static %}
